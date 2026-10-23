@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>QuoteFlow — Quote Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="QuoteFlow home"><span class="brand-mark">q.</span><span>QuoteFlow</span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-link active" href="#generator"><span class="nav-icon">✦</span> Quote generator</a>
+      <a class="nav-link" href="#history"><span class="nav-icon">◷</span> Quote history <span id="side-count" class="nav-count">0</span></a>
+      <div class="sidebar-bottom"><div class="avatar">Q</div><div><strong>Personal workspace</strong><small>Free plan</small></div><span class="dots">···</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div><p class="eyebrow">YOUR DAILY DOSE OF PERSPECTIVE</p><h1>Quote Generator <span class="sparkle">✳</span></h1></div><div class="topbar-right"><span class="live-dot"></span><span>Connected to quote API</span><div class="profile-avatar">C</div></div></header>
+
+      <section class="welcome-row"><div><h2>A little inspiration goes a long way.</h2><p>Discover a fresh thought, save the ones that stay with you.</p></div><div class="date-chip"><span>✦</span> A moment for you</div></section>
+
+      <section id="generator" class="generator-grid">
+        <article class="quote-card">
+          <div class="card-topline"><span class="pill"><span class="pill-dot"></span> RANDOM THOUGHT</span><button id="copy-btn" class="icon-button" title="Copy quote" aria-label="Copy quote">▢</button></div>
+          <div class="quote-decoration">“</div>
+          <div class="quote-content" aria-live="polite"><blockquote id="quote-text">The secret of getting ahead is getting started.</blockquote><p id="quote-author">— Mark Twain</p></div>
+          <div class="quote-divider"></div>
+          <div class="quote-actions"><button id="new-quote-btn" class="primary-button"><span class="refresh-icon">↻</span> Generate new quote</button><span id="quote-status" class="status-text" role="status">Ready when you are</span></div>
+        </article>
+        <aside class="side-card"><div class="side-card-icon">✧</div><p class="eyebrow">A THOUGHT TO KEEP</p><h3>Words can shift your perspective.</h3><p class="side-card-copy">Every quote you generate is saved automatically, so you can revisit the ideas that matter to you.</p><div class="mini-stats"><div><strong id="total-count">0</strong><span>Quotes collected</span></div><div><strong>∞</strong><span>Fresh perspectives</span></div></div><div class="side-card-footer"><span class="tiny-orb"></span> Your collection, saved locally</div></aside>
+      </section>
+
+      <section id="history" class="history-section">
+        <div class="section-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h2>Recent quotes <span id="history-count" class="count-badge">0</span></h2><p class="section-subtitle">Your generated quotes, stored in your SQLite history.</p></div><button id="clear-history-btn" class="text-button">Clear history</button></div>
+        <div id="history-list" class="history-list"><div class="empty-state"><div class="empty-icon">◷</div><h3>Your story starts here</h3><p>Generate your first quote and it will appear in this collection.</p></div></div>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </section>
+      <footer class="footer"><span>QuoteFlow</span><span>Made for a more thoughtful day.</span><span>Flask · SQLite · REST API</span></footer>
+    </main>
+  </div>
+</body>
+</html>
